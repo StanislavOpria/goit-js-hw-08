@@ -4,7 +4,7 @@ const form = document.querySelector('.feedback-form');
 const emailInput = document.querySelector('[name="email"]');
 const messageInput = document.querySelector('[name="message"]');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-const formData = {
+let formData = {
   email: '',
   message: '',
 };
@@ -55,4 +55,8 @@ function setOutput(event) {
   console.log(`email: ${formData.email} message: ${formData.message}`);
   form.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
+  formData = {
+    email: '',
+    message: '',
+  };
 }

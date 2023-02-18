@@ -23,10 +23,17 @@ const loadFromLocalStorage = key => {
   }
 };
 
+forStart();
+
 function getCurrentTime(event) {
   const carrentTime = event.seconds;
   saveInLocalStorage(LOCALSTORAGE_KEY, carrentTime);
 }
 
+function forStart() {
+  if (loadFromLocalStorage(LOCALSTORAGE_KEY)) {
+    player.setCurrentTime(loadFromLocalStorage(LOCALSTORAGE_KEY));
+  }
+}
+
 player.on('timeupdate', throttle(getCurrentTime, 1000));
-player.setCurrentTime(loadFromLocalStorage(LOCALSTORAGE_KEY));
